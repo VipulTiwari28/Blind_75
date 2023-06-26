@@ -34,6 +34,9 @@ public:
         if(n==1)
             return nums[0];
 
+        //So for solving we excluded the last element by sending n-1 as the size of the array in first call
+        //And for second call we started from the first array itself so that we can include the last house
+        //In this manner both the houses remain included simultaneously 
         int ans1 = solve(0,n-1,nums,dp1);
         int ans2 = solve(1,n,nums,dp2);
 
