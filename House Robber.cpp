@@ -38,6 +38,31 @@ public:
         return dp[i];
         
     }
+
+    //Better Approach to the problem I would say
+    int solveApproach2(int i,vector<int> &nums,int n,vector<int> &dp)
+    {
+        if(i==n-1)
+        {
+            return nums[i];
+        }
+        if(i>=n)
+        {
+            return 0;
+        }
+
+        if(dp[i]!=-1)
+        {
+            return dp[i];
+        }
+
+        int include = nums[i] + solveApproach2(i+2,nums,n,dp);
+        int exclude = 0 + solveApproach2(i+1,nums,n,dp);
+
+        dp[i] = max(include,exclude);
+
+        return dp[i];
+    }
     int rob(vector<int>& nums) {
         int n = nums.size();
         vector<int> dp(n+1,-1);
